@@ -5,8 +5,8 @@
  *      Author: utnso
  */
 
-#ifndef TP0_H_
-#define TP0_H_
+#ifndef CLIENTE_H__
+#define CLIENTE_H_H_
 
 #include<stdio.h>
 #include<stdlib.h>
@@ -17,11 +17,9 @@
 
 #include "utils.h"
 
-
 t_log* iniciar_logger(void);
 t_config* leer_config(void);
-void leer_consola(t_log*);
-void paquete(int);
-void terminar_programa(int, t_log*, t_config*);
+void leer_consola(t_log* logger);
+t_paquete* armar_paquete();
 
-#endif /* TP0_H_ */
+#endif /* CLIENTE_H__H_ */
