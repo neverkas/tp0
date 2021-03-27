@@ -24,10 +24,8 @@ int main(void)
 	log_info(logger, "soy un log");
 
 	config = leer_config();
-
-	//asignar valor de config a la variable valor
-
-	//Loggear valor de config
+	char *valor = config_get_string_value(config, "CLAVE");
+	log_info(logger, valor);
 
 	leer_consola(logger);
 
@@ -46,6 +44,8 @@ int main(void)
 
 	// destruimos la instancia de logger que creamos al principio
 	log_destroy(logger);
+	// destruimos el config (es un puntero)
+	config_destroy(config);
 }
 
 t_log* iniciar_logger(void)
@@ -57,7 +57,7 @@ t_log* iniciar_logger(void)
 
 t_config* leer_config(void)
 {
-
+	return config_create("tp0.config");
 }
 
 void leer_consola(t_log* logger)
