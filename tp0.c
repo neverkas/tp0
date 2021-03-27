@@ -67,10 +67,21 @@ void leer_consola(t_log* logger)
 {
 	char* leido;
 
-	//El primero te lo dejo de yapa
+	// leemos el primer caracter, el típico símbolo ">" de la terminal
 	leido = readline(">");
 
+	// alternativa sería comparando cel resultado de strcmp con != 0
+	while(!strncmp(leido, '')){
+		// agregamos al registro de logs los caracteres ingresados en la consola
+		log_info(logger, leido);
+		// liberamos memoria por cada lectura
+		free(leido);
+		// leemos el resto de los caracteres ingresados, y los guardamos en "leido"
+		leido = readline(">");
+	}
 
+	// liberamos memoria
+	free(leido);
 }
 
 void paquete(int conexion)
