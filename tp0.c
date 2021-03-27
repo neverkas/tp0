@@ -23,8 +23,11 @@ int main(void)
 	// agregamos en el registro de la instancia de logs un mensaje
 	log_info(logger, "soy un log");
 
+	// creamos el archivo de configuracion
 	config = leer_config();
+	// obtenemos el valor de variable "clave"
 	char *valor = config_get_string_value(config, "CLAVE");
+	// agregamos al registro de logs el valor
 	log_info(logger, valor);
 
 	leer_consola(logger);
