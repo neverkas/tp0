@@ -18,9 +18,10 @@ int main(void)
 	t_log* logger;
 	t_config* config;
 
+	// creamos una instancia de log
 	logger = iniciar_logger();
-
-	//Loggear "soy un log"
+	// agregamos en el registro de la instancia de logs un mensaje
+	log_info(logger, "soy un log");
 
 	config = leer_config();
 
@@ -42,11 +43,16 @@ int main(void)
 	paquete(conexion);
 
 	terminar_programa(conexion, logger, config);
+
+	// destruimos la instancia de logger que creamos al principio
+	log_destroy(logger);
 }
 
 t_log* iniciar_logger(void)
 {
-
+	// utilizamos funciones de la biblioteca commons
+	// creamos una instancia de logger, indicamos en que archivo se agregarán los logs y de que tipo serán
+	return log_create("tp0.log", "TP0", 1, LOG_LEVEL_INFO);
 }
 
 t_config* leer_config(void)
